@@ -1,0 +1,53 @@
+/* PyPath Student – Points & Rewards (look copied from the admin Rewards Management page) */
+.pills a.pill{text-decoration:none}
+.next-badge{margin-top:14px;max-width:340px}
+.next-badge small{display:flex;justify-content:space-between;color:#3a78c6;font-weight:700;font-size:12px;margin-bottom:6px}
+.next-badge .bar{background:rgba(255,255,255,.7)}
+
+/* Badges (admin badge grid) */
+.badge-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:18px}
+.bdg{display:flex;flex-direction:column;align-items:flex-start;gap:8px;transition:transform .2s ease,box-shadow .2s}
+.bdg:hover{transform:translateY(-3px);box-shadow:0 16px 36px rgba(70,125,200,.16)}
+.bdg .tile{width:56px;height:56px;border-radius:18px}
+.bdg .tile .i{width:28px;height:28px}
+.bdg h3{font-size:17px;font-weight:700}
+.bdg p{color:var(--muted);font-size:13.5px}
+.bdg .row{display:flex;gap:6px;flex-wrap:wrap}
+.bdg .pc{width:100%;margin-top:auto}
+.bdg.locked .tile{filter:grayscale(1);opacity:.55}
+.bdg.locked h3{color:var(--ink-2)}
+
+/* Redeemable rewards */
+.reward-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(250px,1fr));gap:18px}
+.rw{display:flex;flex-direction:column;gap:10px;transition:transform .2s ease,box-shadow .2s}
+.rw:hover{transform:translateY(-3px);box-shadow:0 16px 36px rgba(70,125,200,.16)}
+.rw-img{display:grid;place-items:center;height:120px;border-radius:16px}
+.rw-img .i{width:46px;height:46px}
+.rw h3{font-size:16px;font-weight:700}
+.rw-cost{display:flex;align-items:center;gap:6px;font-weight:800;font-size:18px}
+.rw-cost .i{width:18px;height:18px;color:var(--yellow)}
+.rw small{color:var(--muted)}
+.rw .btn{margin-top:auto}
+.rw .btn .i{width:16px;height:16px}
+
+/* How to earn */
+.earn-list{display:grid;grid-template-columns:repeat(auto-fill,minmax(230px,1fr));gap:14px}
+.earn{display:flex;align-items:center;gap:14px;padding:16px;border:1px solid var(--line);border-radius:16px;background:#fbfdff;transition:transform .2s ease}
+.earn:hover{transform:scale(1.02)}
+.earn b{display:block}
+.earn small{color:var(--muted)}
+.earn .plus{margin-left:auto;font-weight:800;color:var(--green);white-space:nowrap}
+
+/* History */
+.pts-plus{color:var(--green);font-weight:800}
+.pts-minus{color:var(--red);font-weight:800}
+
+@media (max-width:720px){
+  #tabs{width:100%;overflow-x:auto;flex-wrap:nowrap}
+  #tabs .pill{white-space:nowrap}
+}
+
+/* Dark mode */
+:root[data-theme="dark"] .next-badge small{color:#8cbcff}
+:root[data-theme="dark"] .next-badge .bar{background:#22365a}
+:root[data-theme="dark"] .earn{background:var(--surface-2);border-color:var(--line)}

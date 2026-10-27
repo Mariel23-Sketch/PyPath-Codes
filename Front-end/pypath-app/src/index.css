@@ -1,0 +1,4 @@
+/* Global reset only. Each portal's real stylesheet (copied from the original sites) is loaded by
+   layouts/StudentRoot.jsx and layouts/AdminRoot.jsx. */
+*,*::before,*::after{box-sizing:border-box}
+html,body{margin:0}

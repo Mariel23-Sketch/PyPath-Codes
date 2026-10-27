@@ -1,0 +1,106 @@
+/* PyPath Student – Learning Materials (look copied from the admin Learning Materials page) */
+.toolbar .searchbox{flex:1 1 280px}
+
+/* Course cards */
+.course-list{display:flex;flex-direction:column;gap:16px}
+.course-card{display:grid;grid-template-columns:auto minmax(0,1fr) 220px auto;align-items:center;gap:20px;padding:20px 24px;cursor:pointer;transition:.18s;background:rgba(255,255,255,.97);border-radius:var(--radius);box-shadow:var(--shadow);border:1px solid rgba(255,255,255,.95)}
+.course-card:hover{transform:translateY(-2px);box-shadow:0 16px 36px rgba(70,125,200,.16)}
+.ctile{width:74px;height:74px;border-radius:20px;display:grid;place-items:center;color:#fff;flex:none;box-shadow:inset 0 -6px 14px rgba(0,0,0,.08),0 8px 18px rgba(70,125,200,.2)}
+.ctile .i{width:36px;height:36px}
+.ctile img{width:46px;filter:brightness(0) invert(1)}
+.c-blue{background:linear-gradient(145deg,#4f9cfb,#2b6fe0)}
+.c-green{background:linear-gradient(145deg,#3fbf93,#1f9468)}
+.c-orange{background:linear-gradient(145deg,#ffb23f,#f08a12)}
+.c-purple{background:linear-gradient(145deg,#a678f6,#7b4be0)}
+.cc-main h3{font-size:19px;font-weight:700;margin-bottom:2px}
+.cc-main p{color:var(--muted);font-weight:500}
+.cc-prog small{display:flex;justify-content:space-between;color:var(--muted);font-weight:600;margin-bottom:6px}
+.cc-prog small b{color:var(--ink)}
+.cc-chev{color:#8aa3c8}
+.cc-chev .i{width:22px;height:22px}
+.match{margin-top:6px;color:var(--blue);font-size:12.5px;font-weight:600}
+
+/* Course details */
+.cd-head{display:flex;align-items:center;gap:20px;flex-wrap:wrap}
+.cd-head h2{font-size:26px;font-weight:800;letter-spacing:-.3px}
+.cd-head .sub{font-size:13.5px;margin-top:3px}
+.cd-head .push{margin-left:auto}
+.cd-tabs{display:flex;gap:6px;border-bottom:1px solid var(--line);margin:22px 0 18px;overflow-x:auto}
+.cd-tabs button{padding:10px 18px;font-weight:700;color:var(--muted);border-bottom:3px solid transparent;white-space:nowrap}
+.cd-tabs button.on{color:var(--blue);border-color:var(--blue)}
+.desc{color:var(--ink-2);max-width:760px;margin-bottom:18px}
+.prog-row{display:flex;justify-content:space-between;font-weight:700;margin-bottom:6px}
+.cd-body .bar{height:9px}
+.overview-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px;margin-top:20px}
+.ov{border:1px solid var(--line);border-radius:16px;padding:14px 16px;background:#fbfdff}
+.ov small{display:block;color:var(--muted);font-weight:600;font-size:12px}
+.ov b{font-size:22px;font-weight:800}
+
+/* Module / lecture rows (hover = grow a little, like the sidebar) */
+.list-rows{display:grid;gap:4px}
+.lr{display:flex;align-items:center;gap:14px;padding:12px 12px;border-radius:14px;transition:transform .2s ease,background .2s}
+a.lr:hover{transform:scale(1.015);background:var(--blue-xl)}
+.lr.locked{opacity:.6;cursor:not-allowed}
+.lr .n{width:32px;height:32px;border-radius:50%;background:var(--blue-l);color:var(--blue-d);display:grid;place-items:center;font-weight:800;font-size:12px;flex:none}
+.lr .n.ok{background:var(--green-l);color:#1d9667}
+.lr .n .i{width:16px;height:16px}
+.lr .grow{flex:1;min-width:0}
+.lr .grow b{display:block;font-weight:700}
+.lr .grow small{color:var(--muted);font-size:12px}
+.lr .i.chev{width:18px;height:18px;color:#8aa3c8}
+.lr.on{background:var(--blue-l)}
+
+/* Module page */
+.mod-head{display:flex;align-items:center;gap:16px;flex-wrap:wrap;margin-bottom:18px}
+.mod-head h2{font-size:24px;font-weight:800}
+.mod-head .push{margin-left:auto}
+.sec-h{font-size:14px;font-weight:700;color:var(--ink-2);margin:18px 0 8px;text-transform:uppercase;letter-spacing:.05em}
+.prac{display:flex;align-items:center;gap:12px;padding:12px;border:1px solid var(--line);border-radius:14px;margin-top:8px;transition:transform .2s ease,border-color .2s}
+.prac:hover{transform:scale(1.015);border-color:var(--blue)}
+.prac .tile{width:40px;height:40px;border-radius:12px}
+.prac .grow{flex:1;min-width:0}
+.prac b{display:block;font-size:13.5px}
+.prac small{color:var(--muted);font-size:12px}
+
+/* Lecture page */
+.lec-grid{display:grid;grid-template-columns:minmax(0,1.6fr) minmax(0,1fr);gap:18px;align-items:start}
+.video{position:relative;aspect-ratio:16/9;border-radius:16px;overflow:hidden;background:radial-gradient(120% 120% at 20% 10%,#3b6aa8,#142b52 70%);display:grid;place-items:center;color:#fff}
+.video::before{content:"";position:absolute;inset:0;background:radial-gradient(60% 50% at 70% 40%,rgba(255,255,255,.12),transparent 70%)}
+.video .vtitle{position:absolute;left:16px;bottom:14px;right:70px;font-weight:700;font-size:14px;text-shadow:0 1px 6px rgba(0,0,0,.4);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.video .novid{position:relative;text-align:center;opacity:.9;font-weight:600}
+.video .novid .i{width:34px;height:34px;margin:0 auto 8px;display:block}
+.play{width:68px;height:68px;border-radius:50%;background:rgba(255,255,255,.28);backdrop-filter:blur(4px);display:grid;place-items:center;border:2px solid rgba(255,255,255,.55);position:relative;transition:.15s;color:#fff}
+.play:hover{transform:scale(1.08);background:rgba(255,255,255,.4)}
+.play .i{width:28px;height:28px;margin-left:3px}
+.vlen{position:absolute;right:12px;bottom:12px;background:rgba(0,0,0,.45);padding:2px 8px;border-radius:7px;font-size:11.5px;font-weight:700}
+.lec-head{display:flex;justify-content:space-between;align-items:flex-start;gap:12px;margin:18px 0 8px}
+.lec-head h2{font-size:22px;font-weight:800}
+.lec-actions{display:flex;gap:10px;flex-wrap:wrap}
+.lec-actions #doneBtn{margin-left:auto;margin-right:auto}
+.lec-actions .btn .i{width:16px;height:16px}
+.side-list{position:sticky;top:104px}
+
+@media (max-width:1100px){
+  .lec-grid{grid-template-columns:1fr}
+  .side-list{position:static}
+  .course-card{grid-template-columns:auto minmax(0,1fr) auto}
+  .cc-prog{grid-column:2/3}
+  .cc-chev{grid-row:1;grid-column:3}
+}
+@media (max-width:720px){
+  .course-card{gap:14px;padding:14px}
+  .ctile{width:54px;height:54px;border-radius:16px}.ctile .i{width:26px;height:26px}.ctile img{width:34px}
+  .cc-main h3{font-size:16px}
+  .cc-prog{grid-column:1/-1}
+  .overview-grid{grid-template-columns:1fr 1fr}
+  .cd-head .push,.mod-head .push{margin-left:0;width:100%}.cd-head .push .btn,.mod-head .push .btn{width:100%}
+  .lec-actions .btn{flex:1}
+  .lec-actions #doneBtn{order:-1;flex-basis:100%}
+  .toolbar .pills{width:100%}.toolbar .pills .pill{flex:1;justify-content:center}
+}
+
+/* Dark mode */
+:root[data-theme="dark"] .course-card{background:rgba(19,34,63,.96);border-color:rgba(255,255,255,.05)}
+:root[data-theme="dark"] .cc-chev{color:#6d82a6}
+:root[data-theme="dark"] .ov{background:var(--surface-2)}
+:root[data-theme="dark"] .prac{border-color:var(--line)}
