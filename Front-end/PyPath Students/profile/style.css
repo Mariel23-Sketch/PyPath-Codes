@@ -1,0 +1,39 @@
+/* PyPath Student – Profile (look copied from the admin Profile & Settings page) */
+.pills a.pill{text-decoration:none}
+.prof-top{display:flex;align-items:center;gap:20px;flex-wrap:wrap}
+.prof-top h2{font-size:24px;font-weight:800;letter-spacing:-.3px}
+.prof-top .sub{font-size:13.5px;margin:2px 0 8px}
+.chips{display:flex;gap:6px;flex-wrap:wrap}
+.prof-photo{position:relative}
+.avatar-img.xl{width:96px;height:96px;border-width:4px}
+.photo-btn{position:absolute;right:-2px;bottom:-2px;width:32px;height:32px;border-radius:50%;background:var(--blue);color:#fff;display:grid;place-items:center;border:3px solid #fff;transition:transform .2s ease}
+.photo-btn:hover{transform:scale(1.1)}
+.photo-btn .i{width:15px;height:15px}
+
+/* the rows from your original profile page (Level, Points, Modules, Quizzes, Rank) */
+.prof-stats{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:12px;margin-top:20px}
+.ps{border:1px solid var(--line);border-radius:16px;padding:12px 14px;background:#fbfdff;transition:transform .2s ease}
+.ps:hover{transform:translateY(-2px)}
+.ps small{display:block;color:var(--muted);font-weight:600;font-size:12px}
+.ps b{font-size:20px;font-weight:800}
+
+/* form */
+.form{max-width:760px}
+.fg{display:grid;grid-template-columns:1fr 1fr;gap:0 14px}
+.fg .w{grid-column:1/-1}
+.form .form-actions{justify-content:flex-start}
+.form .err{margin:-4px 0 12px}
+.danger-zone{display:flex;align-items:center;justify-content:space-between;gap:14px;flex-wrap:wrap;padding:14px 16px;border:1px dashed #f6c3c5;border-radius:14px;margin-top:6px}
+.danger-zone small{display:block;color:var(--muted)}
+
+@media (max-width:900px){.prof-stats{grid-template-columns:repeat(3,minmax(0,1fr))}}
+@media (max-width:720px){
+  .fg{grid-template-columns:1fr}
+  .prof-stats{grid-template-columns:1fr 1fr}
+  .form .form-actions .btn{flex:1}
+}
+
+/* Dark mode */
+:root[data-theme="dark"] .ps{background:var(--surface-2);border-color:var(--line)}
+:root[data-theme="dark"] .photo-btn{border-color:var(--card)}
+:root[data-theme="dark"] .danger-zone{border-color:#6a2d38}

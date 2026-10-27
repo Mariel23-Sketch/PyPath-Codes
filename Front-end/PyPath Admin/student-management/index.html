@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>PyPath Admin – Manage Users</title>
+<link rel="icon" href="../assets/img/logo-icon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<script src="../assets/js/theme.js"></script>
+<link rel="stylesheet" href="../assets/css/base.css">
+<link rel="stylesheet" href="style.css">
+</head>
+<body data-active="users">
+<div class="shell">
+  <aside class="sidebar" id="sidebar"></aside>
+  <div class="content">
+    <header class="topbar" id="topbar"></header>
+
+    <main class="page">
+      <!-- List view -->
+      <section id="viewList" class="stack-v">
+        <div class="page-head">
+          <div><h1>Manage Users</h1><p>View, add, edit and remove student and admin accounts.</p></div>
+          <button class="btn btn-primary" id="addBtn"><span data-icon="plus"></span>Add User</button>
+        </div>
+
+        <div class="card">
+          <div class="toolbar">
+            <label class="searchbox"><span data-icon="search"></span><input id="search" type="search" placeholder="Search users…"></label>
+            <div class="pills" id="roleFilter" role="group" aria-label="Filter by role">
+              <button class="pill on" data-r=""><span data-icon="users"></span>All</button>
+              <button class="pill" data-r="Student">Student</button>
+              <button class="pill" data-r="Admin">Admin</button>
+            </div>
+            <select class="select status-sel" id="statusFilter" aria-label="Filter by status"><option value="">All status</option><option>Active</option><option>Inactive</option></select>
+          </div>
+          <div class="table-wrap">
+            <table class="table stack">
+              <thead><tr><th style="width:84px">ID</th><th>Name</th><th>Email</th><th>Role</th><th>Status</th><th style="width:140px">Actions</th></tr></thead>
+              <tbody id="rows"></tbody>
+            </table>
+          </div>
+          <div class="pager" id="pager"></div>
+        </div>
+      </section>
+
+      <!-- Profile view -->
+      <section id="viewProfile" class="stack-v" hidden>
+        <a href="#" class="back" id="backBtn"><span data-icon="arrowleft"></span>Back to Manage Users</a>
+        <div class="card prof-card" id="profileCard"></div>
+      </section>
+    </main>
+  </div>
+</div>
+
+<!-- Add / edit user -->
+<div class="modal-backdrop" id="userModal">
+  <form class="modal" id="userForm" novalidate>
+    <div class="modal-head"><h2 id="formTitle">Add User</h2><button type="button" class="icon-btn" data-close aria-label="Close"><span data-icon="x"></span></button></div>
+    <div class="field"><label for="fName">Full name <span class="req">*</span></label><input class="input" id="fName" placeholder="e.g. Jasmine Santos" autocomplete="off"><div class="err" id="eName"></div></div>
+    <div class="field"><label for="fEmail">Email <span class="req">*</span></label><input class="input" id="fEmail" type="email" placeholder="name@email.com" autocomplete="off"><div class="err" id="eEmail"></div></div>
+    <div class="row2">
+      <div class="field"><label for="fRole">Role</label><select class="select" id="fRole"><option>Student</option><option>Admin</option></select></div>
+      <div class="field"><label for="fStatus">Status</label><select class="select" id="fStatus"><option>Active</option><option>Inactive</option></select></div>
+    </div>
+    <div class="field" id="pwField"><label for="fPass">Temporary password <span class="req">*</span></label><input class="input" id="fPass" type="text" placeholder="At least 6 characters" autocomplete="off"><div class="err" id="ePass"></div></div>
+    <div class="modal-foot"><button type="button" class="btn btn-ghost" data-close>Cancel</button><button class="btn btn-primary" type="submit">Save User</button></div>
+  </form>
+</div>
+<nav class="bottomnav" id="bottomnav" aria-label="Quick navigation"></nav>
+<div class="drawer" id="drawer"></div>
+<div class="toasts" id="toasts"></div>
+<script src="../assets/js/icons.js"></script>
+<script src="../assets/js/layout.js"></script>
+<script src="script.js"></script>
+</body>
+</html>

@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>PyPath – Learning Materials</title>
+<link rel="icon" href="../assets/img/logo-icon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<!-- MAIN UI (shared look + sidebar + top bar) -->
+<link rel="stylesheet" href="../main-ui/style.css">
+<script src="../main-ui/script.js"></script>
+<!-- THIS PAGE -->
+<link rel="stylesheet" href="style.css">
+</head>
+<body data-active="learning">
+<div class="shell">
+  <aside class="sidebar" id="sidebar"></aside>
+  <div class="content">
+    <header class="topbar" id="topbar"></header>
+
+    <main class="page">
+      <!-- 1. All courses  (#courses) -->
+      <section class="view" id="v-courses" hidden>
+        <div class="page-head">
+          <div><h1>Learning Materials</h1><p>Pick a course and continue where you left off.</p></div>
+          <a class="btn btn-primary" id="resumeBtn" href="#"><span data-icon="play"></span>Resume lesson</a>
+        </div>
+        <div class="toolbar">
+          <label class="searchbox"><span data-icon="search"></span><input id="courseSearch" type="search" placeholder="Search courses and lessons…"></label>
+          <div class="pills" id="levelPills">
+            <button class="pill on" data-l="">All</button><button class="pill" data-l="Beginner">Beginner</button><button class="pill" data-l="Intermediate">Intermediate</button>
+          </div>
+        </div>
+        <div class="course-list" id="courseList"></div>
+      </section>
+
+      <!-- 2. One course  (#course/1) -->
+      <section class="view" id="v-course" hidden>
+        <a href="#courses" class="back"><span data-icon="arrowleft"></span>Back to Courses</a>
+        <div class="card" id="courseDetail"></div>
+      </section>
+
+      <!-- 3. One module  (#module/11) -->
+      <section class="view" id="v-module" hidden>
+        <a href="#" class="back" id="moduleBack"><span data-icon="arrowleft"></span>Back to Course</a>
+        <div class="card" id="moduleDetail"></div>
+      </section>
+
+      <!-- 4. One lecture  (#lecture/101) -->
+      <section class="view" id="v-lecture" hidden>
+        <a href="#" class="back" id="lectureBack"><span data-icon="arrowleft"></span>Back to Module</a>
+        <div class="lec-grid">
+          <div class="card">
+            <div class="video" id="video"></div>
+            <div class="lec-head">
+              <div><h2 id="lecTitle"></h2><p class="sub" id="lecSub"></p></div>
+              <span id="lecChip"></span>
+            </div>
+            <p class="desc" id="lecDesc"></p>
+            <div class="lec-actions">
+              <button class="btn btn-ghost" id="prevLec"><span data-icon="arrowleft"></span>Previous</button>
+              <button class="btn btn-primary" id="doneBtn"><span data-icon="check"></span>Mark as done</button>
+              <button class="btn btn-ghost" id="nextLec">Next<span data-icon="arrowright"></span></button>
+            </div>
+          </div>
+          <aside class="card side-list">
+            <div class="card-title"><span data-icon="list"></span>In this module</div>
+            <div id="lecList"></div>
+            <div id="lecPractice"></div>
+          </aside>
+        </div>
+      </section>
+    </main>
+  </div>
+</div>
+<nav class="bottomnav" id="bottomnav" aria-label="Quick navigation"></nav>
+<div class="drawer" id="drawer"></div>
+<div class="toasts" id="toasts"></div>
+<script src="script.js"></script>
+</body>
+</html>

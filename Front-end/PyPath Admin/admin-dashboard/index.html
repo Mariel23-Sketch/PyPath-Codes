@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>PyPath Admin – Dashboard</title>
+<link rel="icon" href="../assets/img/logo-icon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<script src="../assets/js/theme.js"></script>
+<link rel="stylesheet" href="../assets/css/base.css">
+<link rel="stylesheet" href="style.css">
+</head>
+<body data-active="dashboard">
+<div class="shell">
+  <aside class="sidebar" id="sidebar"></aside>
+  <div class="content">
+    <header class="topbar" id="topbar"></header>
+
+    <main class="page">
+      <section class="top-grid">
+        <div class="card welcome">
+          <div class="welcome-copy">
+            <span class="admin-tag">Admin</span>
+            <h1>Welcome Back,<br>Admin!</h1>
+            <p>Here's what's happening with your PyPath platform today.</p>
+          </div>
+          <div class="welcome-art" aria-hidden="true">
+            <span class="spk s1"></span><span class="spk s2"></span><span class="spk s3"></span>
+            <span class="wcloud"></span>
+            <img src="../assets/img/mascot-wink.png" alt="">
+          </div>
+        </div>
+        <div class="stats" id="stats"></div>
+      </section>
+
+      <section class="row-a">
+        <div class="card">
+          <div class="card-title"><span data-icon="users"></span>User Growth
+            <div class="seg push" id="rangeSeg" role="tablist">
+              <button class="on" data-r="7D">7D</button><button data-r="30D">30D</button><button data-r="3M">3M</button><button data-r="1Y">1Y</button>
+            </div>
+          </div>
+          <div class="chart-box"><canvas id="growthChart"></canvas></div>
+        </div>
+
+        <div class="card">
+          <div class="card-title"><span data-icon="book"></span>Course Progress</div>
+          <div class="donut-wrap">
+            <div class="donut">
+              <svg viewBox="0 0 180 180" aria-hidden="true">
+                <circle cx="90" cy="90" r="72" fill="none" stroke="#cfe2fb" stroke-width="18"/>
+                <circle id="ring" cx="90" cy="90" r="72" fill="none" stroke="#2f9e86" stroke-width="18" stroke-linecap="round" stroke-dasharray="0 452.4" transform="rotate(-90 90 90)"/>
+              </svg>
+              <div class="donut-c"><b>68%</b><small>Overall Progress</small></div>
+            </div>
+            <ul class="legend">
+              <li><i style="background:#2f9e86"></i>Completed<b>68%</b></li>
+              <li><i style="background:#4a90e8"></i>In Progress<b>24%</b></li>
+              <li><i style="background:#9b5de5"></i>Not Started<b>8%</b></li>
+            </ul>
+          </div>
+          <svg class="books" viewBox="0 0 64 56" aria-hidden="true"><rect x="6" y="30" width="46" height="12" rx="3" fill="#7aa8f5"/><rect x="10" y="20" width="44" height="12" rx="3" fill="#a98bf1" transform="rotate(-6 10 20)"/><rect x="14" y="10" width="40" height="11" rx="3" fill="#61c7a4" transform="rotate(-12 14 10)"/><path d="m52 6 1.600 3.400L57 11l-3.400 1.600L52 16l-1.600-3.400L47 11l3.400-1.600z" fill="#f4b01f"/></svg>
+        </div>
+
+        <div class="card">
+          <div class="card-title"><span data-icon="clock"></span>Recent Activities<a class="view-all push" href="#" data-soon="Activity log">View All <span data-icon="arrowright"></span></a></div>
+          <ul class="activity" id="activity"></ul>
+        </div>
+      </section>
+
+      <section class="row-b">
+        <div class="card">
+          <div class="card-title"><span data-icon="book"></span>Top Courses<a class="view-all push" href="../learning-materials/index.html#courses">View All <span data-icon="arrowright"></span></a></div>
+          <ul class="top-courses" id="topCourses"></ul>
+        </div>
+
+        <div class="card">
+          <div class="card-title"><span data-icon="users"></span>Recent Users<a class="view-all push" href="../student-management/index.html">View All <span data-icon="arrowright"></span></a></div>
+          <div class="table-wrap">
+            <table class="table stack">
+              <thead><tr><th>Name</th><th>Email</th><th>Joined</th><th>Status</th></tr></thead>
+              <tbody id="recentUsers"></tbody>
+            </table>
+          </div>
+        </div>
+
+        <div class="card">
+          <div class="card-title"><span data-icon="gear"></span>System Overview</div>
+          <div class="sys-grid">
+            <div class="sys"><span class="tile t-green"><span data-icon="shield"></span></span><div><small>Server Status</small><b class="ok"><i class="ring-dot"></i>Online</b></div></div>
+            <div class="sys"><span class="tile t-green"><span data-icon="database"></span></span><div><small>Database</small><b class="ok sm"><i class="dot-g"></i>Connected</b></div></div>
+            <div class="sys"><span class="tile t-blue"><span data-icon="drive"></span></span><div><small>Storage Usage</small><b>42%</b><div class="meter"><span style="width:42%"></span></div></div></div>
+            <div class="sys"><span class="tile t-blue"><span data-icon="clock"></span></span><div><small>Last Backup</small><b class="sm2" id="lastBackup">May 18, 2025</b><em>12:30 PM</em></div></div>
+          </div>
+          <div class="keep">
+            <img src="../assets/img/mascot-star.png" alt="">
+            <div><b>Keep going!</b><small>Your platform is running smoothly.</small></div>
+            <span class="kstar"></span>
+          </div>
+          <button class="btn btn-ghost btn-sm refresh" id="refreshBtn"><span data-icon="clock"></span>Refresh status</button>
+        </div>
+      </section>
+    </main>
+  </div>
+</div>
+<nav class="bottomnav" id="bottomnav" aria-label="Quick navigation"></nav>
+<div class="drawer" id="drawer"></div>
+<div class="toasts" id="toasts"></div>
+<script src="../assets/js/icons.js"></script>
+<script src="../assets/js/layout.js"></script>
+<script src="script.js"></script>
+</body>
+</html>

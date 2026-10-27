@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>PyPath Admin – Login</title>
+<link rel="icon" href="../assets/img/logo-icon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<script src="../assets/js/theme.js"></script>
+<link rel="stylesheet" href="../assets/css/base.css">
+<link rel="stylesheet" href="style.css">
+</head>
+<body class="auth">
+<button class="icon-btn theme-float" id="themeBtn" type="button" aria-label="Switch light or dark mode"></button>
+<main class="auth-wrap">
+  <section class="auth-card" aria-label="Admin login">
+    <aside class="auth-hero">
+      <div class="hero-logo"><img src="../assets/img/logo-icon.png" alt=""><b>PyPath</b></div>
+      <h1>Start your Python journey,<br>one line at a time.</h1>
+      <p>Learn, practice, and have fun as you build your coding skills. With PyPath, code your way and grow each day!</p>
+      <div class="hero-art" aria-hidden="true">
+        <span class="cloud c1"></span><span class="cloud c2"></span>
+        <img src="../assets/img/mascot-cheer.png" alt="">
+      </div>
+    </aside>
+
+    <form class="auth-form" id="loginForm" novalidate>
+      <h2>ADMIN LOGIN</h2>
+      <p class="lead">Welcome back, Admin! Sign in to manage PyPath.</p>
+
+      <div class="field">
+        <label class="sr" for="username">Username</label>
+        <div class="input-ico">
+          <span data-icon="user"></span>
+          <input class="input" id="username" type="text" placeholder="Username" autocomplete="username">
+        </div>
+        <div class="err" id="userErr"></div>
+      </div>
+
+      <div class="field">
+        <label class="sr" for="password">Password</label>
+        <div class="input-ico">
+          <span data-icon="lock"></span>
+          <input class="input" id="password" type="password" placeholder="Password" autocomplete="current-password">
+          <button type="button" class="eye" id="pwToggle" aria-label="Show password"><span data-icon="eye" id="eyeIco"></span></button>
+        </div>
+        <div class="err" id="passErr"></div>
+      </div>
+
+      <div class="opts">
+        <label class="check"><input type="checkbox" id="remember"> Remember me</label>
+        <a href="#" id="forgotLink">Forgot password?</a>
+      </div>
+
+      <div class="err form-err" id="formErr" role="alert"></div>
+      <button class="btn btn-grad btn-block" type="submit" id="loginBtn">Log In</button>
+
+      <div class="or"><span>OR</span></div>
+      <button type="button" class="btn btn-ghost btn-block social" data-p="Google"><span data-icon="google"></span>Continue with Google</button>
+      <button type="button" class="btn btn-ghost btn-block social" data-p="Facebook"><span data-icon="facebook"></span>Continue with Facebook</button>
+      <button type="button" class="btn btn-ghost btn-block social" data-p="Apple"><span data-icon="apple"></span>Continue with Apple</button>
+      <p class="demo">Demo account: <b>admin</b> / <b>admin123</b></p>
+    </form>
+  </section>
+</main>
+
+<div class="modal-backdrop" id="forgotModal">
+  <div class="modal">
+    <div class="modal-head"><h2>Reset password</h2><button class="icon-btn" data-close aria-label="Close"><span data-icon="x"></span></button></div>
+    <p class="muted-p">Enter your admin email and we'll send you a reset link (demo only).</p>
+    <div class="field"><label for="resetEmail">Email</label>
+      <div class="input-ico"><span data-icon="mail"></span><input class="input" id="resetEmail" type="email" placeholder="admin@pypath.com"></div>
+      <div class="err" id="resetErr"></div></div>
+    <div class="modal-foot"><button class="btn btn-ghost" data-close>Cancel</button><button class="btn btn-primary" id="sendReset">Send link</button></div>
+  </div>
+</div>
+<div class="toasts" id="toasts"></div>
+<script src="../assets/js/icons.js"></script>
+<script src="../assets/js/layout.js"></script>
+<script src="script.js"></script>
+</body>
+</html>

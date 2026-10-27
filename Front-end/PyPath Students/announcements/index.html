@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>PyPath – Announcements</title>
+<link rel="icon" href="../assets/img/logo-icon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<!-- MAIN UI (shared look + sidebar + top bar) -->
+<link rel="stylesheet" href="../main-ui/style.css">
+<script src="../main-ui/script.js"></script>
+<!-- THIS PAGE -->
+<link rel="stylesheet" href="style.css">
+</head>
+<body data-active="announcements">
+<div class="shell">
+  <aside class="sidebar" id="sidebar"></aside>
+  <div class="content">
+    <header class="topbar" id="topbar"></header>
+
+    <main class="page">
+      <div class="page-head">
+        <div><h1>Announcements</h1><p>Stay updated with the latest news, reminders, and important information.</p></div>
+        <button class="btn btn-ghost" id="markAll"><span data-icon="check"></span>Mark all as read</button>
+      </div>
+
+      <div class="card">
+        <!-- search + filter -->
+        <div class="toolbar">
+          <label class="searchbox"><span data-icon="search"></span><input id="search" type="search" placeholder="Search announcements…"></label>
+          <div class="pills" id="readFilter" role="group" aria-label="Filter announcements">
+            <button class="pill on" data-f="">All</button><button class="pill" data-f="new">Unread</button><button class="pill" data-f="read">Read</button>
+          </div>
+        </div>
+
+        <!-- announcement cards (filled by script.js from main-ui data) -->
+        <div class="a-list" id="list"></div>
+        <div class="pager" id="pager"></div>
+      </div>
+    </main>
+  </div>
+</div>
+<nav class="bottomnav" id="bottomnav" aria-label="Quick navigation"></nav>
+<div class="drawer" id="drawer"></div>
+<div class="toasts" id="toasts"></div>
+<script src="script.js"></script>
+</body>
+</html>

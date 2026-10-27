@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>PyPath – Activities</title>
+<link rel="icon" href="../assets/img/logo-icon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<!-- MAIN UI (shared look + sidebar + top bar) -->
+<link rel="stylesheet" href="../main-ui/style.css">
+<script src="../main-ui/script.js"></script>
+<!-- THIS PAGE -->
+<link rel="stylesheet" href="style.css">
+</head>
+<body data-active="activities">
+<div class="shell">
+  <aside class="sidebar" id="sidebar"></aside>
+  <div class="content">
+    <header class="topbar" id="topbar"></header>
+
+    <main class="page">
+      <!-- 1. List of quizzes / exercises  (#quizzes or #exercises) -->
+      <section class="view" id="v-list" hidden>
+        <div class="page-head">
+          <div><h1>Activities</h1><p>Quizzes and practice exercises from your lessons. Finish them to earn points.</p></div>
+        </div>
+        <div class="stats" id="actStats"></div>
+        <div class="card">
+          <div class="toolbar">
+            <div class="pills" id="typeTabs" role="tablist">
+              <a class="pill on" href="#quizzes" data-t="quizzes">Quizzes</a>
+              <a class="pill" href="#exercises" data-t="exercises">Exercises</a>
+            </div>
+            <label class="searchbox"><span data-icon="search"></span><input id="search" type="search" placeholder="Search activities…"></label>
+            <div class="pills" id="diffFilter" role="group" aria-label="Filter by difficulty"></div>
+            <select class="select status-sel" id="statusFilter" aria-label="Filter by status"><option value="">All status</option><option>Not started</option><option>Completed</option></select>
+          </div>
+          <div class="act-grid" id="actGrid"></div>
+        </div>
+      </section>
+
+      <!-- 2. Take a quiz  (#quiz/1) -->
+      <section class="view" id="v-quiz" hidden>
+        <a href="#quizzes" class="back"><span data-icon="arrowleft"></span>Back to Activities</a>
+        <div class="quiz-grid">
+          <div class="card">
+            <div class="q-head">
+              <div><h2 id="quizTitle"></h2><p class="sub" id="quizSub"></p></div>
+              <span class="timer" id="timer"><span data-icon="clock"></span><b id="timerTx">0:00</b></span>
+            </div>
+            <div class="q-progress"><div class="bar"><i id="qBar"></i></div><small id="qCount"></small></div>
+            <p class="pv-q" id="qText"></p>
+            <div id="qOpts" role="radiogroup"></div>
+            <div class="q-actions">
+              <button class="btn btn-ghost" id="qPrev"><span data-icon="arrowleft"></span>Previous</button>
+              <button class="btn btn-primary" id="qNext">Next<span data-icon="arrowright"></span></button>
+            </div>
+          </div>
+          <aside class="card side-card">
+            <div class="card-title"><span data-icon="list"></span>Questions</div>
+            <div class="pv-nav" id="qNav"></div>
+            <p class="hint">Answered questions turn blue. You can jump to any question.</p>
+            <button class="btn btn-primary btn-block" id="submitQuiz"><span data-icon="check"></span>Submit Quiz</button>
+          </aside>
+        </div>
+      </section>
+
+      <!-- 3. Quiz results  (#result/1) -->
+      <section class="view" id="v-result" hidden>
+        <a href="#quizzes" class="back"><span data-icon="arrowleft"></span>Back to Activities</a>
+        <div class="card hero res-hero" id="resHero"></div>
+        <div class="card">
+          <div class="res-head"><h2 id="resTitle">Quiz Results</h2><div class="res-btns"><a class="btn btn-ghost" id="retakeBtn" href="#"><span data-icon="refresh"></span>Retake</a><a class="btn btn-primary" href="#quizzes">More activities</a></div></div>
+          <div class="res-stats" id="resStats"></div>
+          <div class="table-wrap">
+            <table class="table stack">
+              <thead><tr><th style="width:56px">#</th><th>Question</th><th>Your Answer</th><th>Correct Answer</th><th>Result</th></tr></thead>
+              <tbody id="resRows"></tbody>
+            </table>
+          </div>
+        </div>
+      </section>
+
+      <!-- 4. Do an exercise  (#exercise/1) -->
+      <section class="view" id="v-exercise" hidden>
+        <a href="#exercises" class="back"><span data-icon="arrowleft"></span>Back to Activities</a>
+        <div class="form-grid">
+          <div class="card">
+            <div class="q-head">
+              <div><h2 id="exTitle"></h2><p class="sub" id="exSub"></p></div>
+              <span id="exChip"></span>
+            </div>
+            <p class="prev-q" id="exInstr"></p>
+            <div id="exWork"></div>
+            <div class="err" id="exErr"></div>
+            <div class="run-row" id="exBtns"></div>
+          </div>
+          <aside class="card preview-card">
+            <div class="card-title"><span data-icon="code"></span>Output</div>
+            <div id="outBox"><div class="output"><small>Output</small>Press Run to see what your code prints.</div></div>
+            <p class="hint">Demo runner: it shows what your <code>print()</code> lines would display.</p>
+          </aside>
+        </div>
+      </section>
+    </main>
+  </div>
+</div>
+<nav class="bottomnav" id="bottomnav" aria-label="Quick navigation"></nav>
+<div class="drawer" id="drawer"></div>
+<div class="toasts" id="toasts"></div>
+<script src="script.js"></script>
+</body>
+</html>

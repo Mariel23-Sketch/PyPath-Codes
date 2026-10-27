@@ -1,0 +1,54 @@
+<!doctype html><html><head><meta charset=utf8><meta name=viewport content="width=device-width,initial-scale=1,viewport-fit=cover"><style>:root{color-scheme:light;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}html{scroll-padding-top:env(safe-area-inset-top,0px)}body{margin:0;padding:0;font:14px -apple-system,BlinkMacSystemFont,sans-serif;background:#fff;color:#000}img{max-width:100%}[hidden]:not([hidden=until-found i]){display:none!important}</style></head><body>
+<title>PyPath Admin</title>
+<script src="assets/js/theme.js"></script>
+<meta name="claude:viewport-fit-sides" content="cover">
+<style>
+/* Layout: one centered column, a primary "start" action, then the five pages as a simple list */
+:root{
+  --bg:#eef4ff; --fg:#14284b; --muted:#5d6e8f; --line:#d5e2f8; --card:#ffffff;
+  --accent:#2f6df0; --accent-fg:#ffffff;
+  --font:"Segoe UI",system-ui,-apple-system,Roboto,sans-serif;
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){--bg:#0e1a30;--fg:#e6eefc;--muted:#9bacc9;--line:#25375a;--card:#15233f;--accent:#6b9bff;--accent-fg:#0e1a30;color-scheme:dark}
+}
+:root[data-theme="dark"]{--bg:#0e1a30;--fg:#e6eefc;--muted:#9bacc9;--line:#25375a;--card:#15233f;--accent:#6b9bff;--accent-fg:#0e1a30;color-scheme:dark}
+body{background:var(--bg);color:var(--fg);font-family:var(--font);padding-block:40px;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px))}
+main{max-width:560px;margin:0 auto;display:grid;gap:22px}
+h1{font-size:28px;text-wrap:balance}
+p{color:var(--muted);font-size:15px;line-height:1.5}
+.start{display:block;text-align:center;background:var(--accent);color:var(--accent-fg);padding:14px 18px;border-radius:12px;font-weight:700;font-size:16px;text-decoration:none}
+.start:focus-visible,.list a:focus-visible{outline:3px solid var(--accent);outline-offset:2px}
+.creds{font-size:13px}
+.creds b{color:var(--fg)}
+.list{list-style:none;display:grid;gap:8px;padding:0}
+.list a{display:flex;justify-content:space-between;gap:12px;padding:13px 15px;border:1px solid var(--line);background:var(--card);border-radius:12px;color:var(--fg);text-decoration:none;font-weight:600}
+.list a span{color:var(--muted);font-weight:400;font-size:13px}
+.list a:hover{border-color:var(--accent)}
+h2{font-size:13px;letter-spacing:.06em;text-transform:uppercase;color:var(--muted)}
+</style>
+<main>
+  <header>
+    <h1>PyPath Admin</h1>
+    <p>Clickable frontend preview of the admin side. Data is sample data and resets when you reload a page.</p>
+  </header>
+  <a class="start" href="admin-login/index.html">Start at Admin Login</a>
+  <p class="creds">Sign in with <b>admin</b> and <b>admin123</b>.</p>
+  <section>
+    <h2>Jump to a page</h2>
+    <ul class="list">
+      <li><a href="admin-login/index.html">Admin Login <span>Sign in</span></a></li>
+      <li><a href="admin-dashboard/index.html">Admin Dashboard <span>Overview</span></a></li>
+      <li><a href="student-management/index.html">Student Management <span>Students</span></a></li>
+      <li><a href="learning-materials/index.html">Learning Materials <span>Courses, lessons</span></a></li>
+      <li><a href="activities/index.html">Activities <span>Quizzes, exercises</span></a></li>
+      <li><a href="admin-extras/index.html#progress">Results and Progress <span>Progress</span></a></li>
+      <li><a href="admin-extras/index.html#points-reward">Points and Reward Management <span>Badges, rewards</span></a></li>
+      <li><a href="student/points-reward/index.html">Student: Points and Reward <span>Student view</span></a></li>
+      <li><a href="admin-extras/index.html#announcements">Announcement Management <span>News</span></a></li>
+      <li><a href="admin-extras/index.html#profile">Admin Profile and Settings <span>Settings</span></a></li>
+    </ul>
+  </section>
+</main>
+
+</body></html>

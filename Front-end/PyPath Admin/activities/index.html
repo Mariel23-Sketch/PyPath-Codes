@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>PyPath Admin – Activities</title>
+<link rel="icon" href="../assets/img/logo-icon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<script src="../assets/js/theme.js"></script>
+<link rel="stylesheet" href="../assets/css/base.css">
+<link rel="stylesheet" href="style.css">
+</head>
+<body data-active="activities">
+<div class="shell">
+  <aside class="sidebar" id="sidebar"></aside>
+  <div class="content">
+    <header class="topbar" id="topbar"></header>
+
+    <main class="page">
+      <nav class="crumbs" id="crumbs" aria-label="Breadcrumb"></nav>
+
+      <!-- Activities home -->
+      <section class="view" id="v-list">
+        <div class="page-head">
+          <div><h1>Activities</h1><p>Quizzes and practice exercises, organised by difficulty, course and lesson.</p></div>
+          <button class="btn btn-primary" id="addAct"><span data-icon="plus"></span>Add Activity</button>
+        </div>
+
+        <div class="diff-grid" id="diffCards"></div>
+
+        <div class="card">
+          <div class="toolbar">
+            <label class="searchbox"><span data-icon="search"></span><input id="search" type="search" placeholder="Search activities…"></label>
+            <select class="select status-sel" id="courseFilter" aria-label="Filter by course"></select>
+            <select class="select status-sel" id="typeFilter" aria-label="Filter by type"><option value="">All types</option><option value="quiz">Quizzes</option><option value="exercise">Exercises</option></select>
+            <select class="select status-sel" id="statusFilter" aria-label="Filter by status"><option value="">All status</option><option>Published</option><option>Draft</option></select>
+          </div>
+          <div class="pills" id="diffFilter" role="group" aria-label="Filter by difficulty" style="margin-bottom:16px">
+            <button class="pill on" data-d="">All levels</button><button class="pill" data-d="Easy">Easy</button><button class="pill" data-d="Medium">Medium</button><button class="pill" data-d="Hard">Hard</button>
+          </div>
+          <div class="table-wrap">
+            <table class="table stack">
+              <thead><tr><th style="width:48px">#</th><th>Activity</th><th>Course · Lesson</th><th>Type</th><th>Level</th><th>Points</th><th>Status</th><th style="width:150px">Actions</th></tr></thead>
+              <tbody id="rows"></tbody>
+            </table>
+          </div>
+          <div class="pager" id="pager"></div>
+        </div>
+      </section>
+
+      <!-- Add / edit -->
+      <section class="view" id="v-form" hidden>
+        <div class="page-head"><div><h1 id="formTitle">Add Activity</h1><p>Choose a quiz or a practical exercise, then link it to a course and lesson.</p></div></div>
+        <div class="form-grid">
+          <form class="card" id="actForm" novalidate>
+            <div class="field"><label for="aTitle">Activity title <span class="req">*</span></label><input class="input" id="aTitle" placeholder="e.g. Variables Quiz" autocomplete="off"><div class="err" id="eTitle"></div></div>
+            <div class="field"><span class="label">Activity type <span class="req">*</span></span>
+              <div class="radios" id="typeRadios">
+                <label class="radio"><input type="radio" name="atype" value="quiz" checked> Quiz</label>
+                <label class="radio"><input type="radio" name="atype" value="exercise"> Programming exercise</label>
+              </div>
+            </div>
+            <div class="row2">
+              <div class="field"><label for="aCourse">Course <span class="req">*</span></label><select class="select" id="aCourse"></select><div class="err" id="eCourse"></div></div>
+              <div class="field"><label for="aLesson">Lesson</label><select class="select" id="aLesson"></select></div>
+            </div>
+            <div class="row2">
+              <div class="field"><span class="label">Difficulty <span class="req">*</span></span>
+                <div class="radios">
+                  <label class="radio"><input type="radio" name="diff" value="Easy" checked> Easy</label>
+                  <label class="radio"><input type="radio" name="diff" value="Medium"> Medium</label>
+                  <label class="radio"><input type="radio" name="diff" value="Hard"> Hard</label>
+                </div>
+              </div>
+              <div class="field"><label for="aStatus">Status</label><select class="select" id="aStatus"><option>Draft</option><option>Published</option></select></div>
+            </div>
+
+            <!-- Quiz settings -->
+            <div id="quizBox">
+              <div class="row2">
+                <div class="field"><label for="aPass">Passing score (%)</label><input class="input" id="aPass" type="number" min="1" max="100" value="60"><div class="err" id="ePass"></div></div>
+                <div class="field"><span class="label">Total points</span><div class="total-pts" id="totalPts">0</div></div>
+              </div>
+              <div class="field">
+                <span class="label">Questions <span class="req">*</span></span>
+                <div><button type="button" class="btn btn-soft btn-sm" id="addQ"><span data-icon="plus"></span>Add Question</button></div>
+                <div class="err" id="eQs"></div>
+              </div>
+              <div id="qList"></div>
+            </div>
+
+            <!-- Exercise settings -->
+            <div id="exBox" hidden>
+              <div class="field"><label for="xInstr">Problem description and instructions <span class="req">*</span></label><textarea class="textarea" id="xInstr" placeholder="Describe the problem and what the student must do."></textarea><div class="err" id="eInstr"></div></div>
+              <div class="field"><label for="xCode">Starter code</label><textarea class="textarea mono" id="xCode" spellcheck="false" placeholder="# students start here"></textarea></div>
+              <div class="row2">
+                <div class="field"><label for="xVal">How is the answer checked?</label><select class="select" id="xVal"><option value="output">Program output must match</option><option value="manual">Manual review by the teacher</option></select></div>
+                <div class="field"><label for="xPts">Points <span class="req">*</span></label><input class="input" id="xPts" type="number" min="1" value="10"><div class="err" id="ePts"></div></div>
+              </div>
+              <div class="field" id="expField"><label for="xExp">Expected output <span class="req">*</span></label><textarea class="textarea mono" id="xExp" spellcheck="false" placeholder="Hello, Python!"></textarea><div class="hint">The student&#39;s output is compared line by line. Extra spaces at the ends are ignored.</div><div class="err" id="eExp"></div></div>
+              <div class="row2">
+                <div class="field"><label for="xOk">Feedback when correct</label><textarea class="textarea" id="xOk" placeholder="Great job! Your program works."></textarea></div>
+                <div class="field"><label for="xBad">Hint when incorrect</label><textarea class="textarea" id="xBad" placeholder="Check your output and try again."></textarea></div>
+              </div>
+            </div>
+
+            <div class="form-actions"><button type="button" class="btn btn-ghost" id="cancelForm">Cancel</button><button class="btn btn-primary" type="submit">Save Activity</button></div>
+          </form>
+
+          <aside class="card preview-card">
+            <div class="card-title">Student preview</div>
+            <div id="prev"></div>
+          </aside>
+        </div>
+      </section>
+
+      <!-- Results -->
+      <section class="view" id="v-results" hidden>
+        <div class="card">
+          <div class="res-head">
+            <h2 id="resTitle">Results</h2>
+            <select class="select" id="studentSel" aria-label="Choose student"></select>
+          </div>
+          <p class="sub" style="margin:-8px 0 16px">Sample attempts, shown so you can preview how results look.</p>
+          <div class="res-stats" id="resStats"></div>
+          <div class="table-wrap">
+            <table class="table stack" id="resTable"></table>
+          </div>
+        </div>
+      </section>
+    </main>
+  </div>
+</div>
+<nav class="bottomnav" id="bottomnav" aria-label="Quick navigation"></nav>
+<div class="drawer" id="drawer"></div>
+<div class="toasts" id="toasts"></div>
+<script src="../assets/js/icons.js"></script>
+<script src="../assets/js/layout.js"></script>
+<script src="../assets/js/data.js"></script>
+<script src="script.js"></script>
+</body>
+</html>

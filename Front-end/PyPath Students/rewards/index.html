@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>PyPath – Points &amp; Rewards</title>
+<link rel="icon" href="../assets/img/logo-icon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<!-- MAIN UI (shared look + sidebar + top bar) -->
+<link rel="stylesheet" href="../main-ui/style.css">
+<script src="../main-ui/script.js"></script>
+<!-- THIS PAGE -->
+<link rel="stylesheet" href="style.css">
+</head>
+<body data-active="rewards">
+<div class="shell">
+  <aside class="sidebar" id="sidebar"></aside>
+  <div class="content">
+    <header class="topbar" id="topbar"></header>
+
+    <main class="page">
+      <div class="page-head">
+        <div><h1>Points &amp; Rewards</h1><p>Earn points by learning, unlock badges, and redeem rewards.</p></div>
+      </div>
+
+      <!-- points hero -->
+      <div class="card hero">
+        <div class="hero-copy">
+          <span class="tag">Your points</span>
+          <h2><span id="heroPts">0</span> points</h2>
+          <p id="heroSub"></p>
+          <div class="next-badge" id="nextBadge"></div>
+        </div>
+        <div class="hero-art" aria-hidden="true">
+          <span class="spk s1"></span><span class="spk s2"></span><span class="spk s3"></span><span class="wcloud"></span>
+          <img src="../assets/img/mascot-star.png" alt="" data-ph="Mascot">
+        </div>
+      </div>
+
+      <div class="stats" id="rwStats"></div>
+
+      <!-- tabs: #badges  #rewards  #earn  #history -->
+      <div class="pills" id="tabs" role="tablist">
+        <a class="pill" href="#badges" data-t="badges">Badges</a>
+        <a class="pill" href="#rewards" data-t="rewards">Redeem Rewards</a>
+        <a class="pill" href="#earn" data-t="earn">How to Earn</a>
+        <a class="pill" href="#history" data-t="history">Points History</a>
+      </div>
+      <div id="tabBody"></div>
+    </main>
+  </div>
+</div>
+<nav class="bottomnav" id="bottomnav" aria-label="Quick navigation"></nav>
+<div class="drawer" id="drawer"></div>
+<div class="toasts" id="toasts"></div>
+<script src="script.js"></script>
+</body>
+</html>

@@ -1,0 +1,48 @@
+.stack-v{display:flex;flex-direction:column;gap:18px}
+.status-sel{width:auto;min-width:140px;height:44px}
+.toolbar .pills .pill .i{width:16px;height:16px}
+.mono{font-variant-numeric:tabular-nums;color:var(--muted);font-weight:700}
+
+/* Profile */
+.prof-card{padding:26px}
+.prof-top{display:flex;align-items:center;gap:20px;flex-wrap:wrap}
+.prof-top h2{font-size:24px;font-weight:800;letter-spacing:-.3px}
+.prof-top .sub{font-size:13.5px;margin-top:2px}
+.prof-top .push{margin-left:auto}
+.avatar.xl{width:86px;height:86px;font-size:28px;border-width:4px}
+.info-row{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px;margin:22px 0}
+.info{border:1px solid var(--line);border-radius:16px;padding:14px 16px;background:#fbfdff;min-width:0}
+.info small{display:block;color:var(--muted);font-weight:600;font-size:12px}
+.info b{font-size:15px;overflow-wrap:anywhere}
+.tabs{display:flex;gap:6px;border-bottom:1px solid var(--line);margin-bottom:16px;overflow-x:auto}
+.tab{padding:10px 18px;font-weight:700;color:var(--muted);border-bottom:3px solid transparent;white-space:nowrap}
+.tab.on{color:var(--blue);border-color:var(--blue)}
+.course-row{display:grid;grid-template-columns:44px minmax(0,1fr) auto;gap:14px;align-items:center;padding:12px 0;border-bottom:1px solid #edf3fb}
+.course-row:last-child{border-bottom:0}
+.course-row .bar{margin-top:6px}
+.course-row .pct{font-weight:700;font-size:13px}
+.badge-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(150px,1fr));gap:14px}
+.badge-box{border:1px solid var(--line);border-radius:18px;padding:16px;text-align:center;background:#fbfdff}
+.badge-box .tile{width:56px;height:56px;border-radius:50%;margin-bottom:8px}
+.badge-box.locked{opacity:.45}
+.badge-box b{display:block;font-size:13px}.badge-box small{color:var(--muted)}
+.timeline{list-style:none;display:grid;gap:4px}
+.timeline li{display:flex;gap:12px;align-items:center;padding:10px 0;border-bottom:1px solid #edf3fb}
+.timeline li:last-child{border-bottom:0}
+.timeline time{margin-left:auto;color:var(--muted);font-size:12px;white-space:nowrap}
+.admin-note{display:flex;align-items:center;gap:14px;padding:18px;border-radius:16px;background:var(--blue-xl);color:var(--ink-2)}
+.admin-note img{width:70px}
+
+@media (max-width:720px){
+  .info-row{grid-template-columns:1fr}
+  .prof-top .push{margin-left:0;width:100%}
+  .prof-top .push .btn{width:100%}
+  .toolbar .pills{width:100%}
+  .status-sel{width:100%}
+}
+
+/* Dark mode */
+:root[data-theme="dark"] .info,:root[data-theme="dark"] .badge-box{background:var(--surface-2)}
+:root[data-theme="dark"] .course-row,:root[data-theme="dark"] .timeline li{border-bottom-color:var(--line)}
+:root[data-theme="dark"] .course-row .bar{background:#22365a}
+:root[data-theme="dark"] .admin-note{background:#172c50}

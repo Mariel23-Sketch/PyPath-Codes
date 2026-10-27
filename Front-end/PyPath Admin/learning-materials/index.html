@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>PyPath Admin – Learning Materials</title>
+<link rel="icon" href="../assets/img/logo-icon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<script src="../assets/js/theme.js"></script>
+<link rel="stylesheet" href="../assets/css/base.css">
+<link rel="stylesheet" href="style.css">
+</head>
+<body data-active="learning">
+<div class="shell">
+  <aside class="sidebar" id="sidebar"></aside>
+  <div class="content">
+    <header class="topbar" id="topbar"></header>
+
+    <main class="page" id="page">
+      <nav class="crumbs" id="crumbs" aria-label="Breadcrumb"></nav>
+
+      <!-- Manage Courses -->
+      <section class="view" id="v-courses" hidden>
+        <div class="page-head">
+          <div><h1>Manage Courses</h1><p>Create courses and organise the lessons inside them.</p></div>
+          <button class="btn btn-primary" id="addCourse"><span data-icon="plus"></span>Add Course</button>
+        </div>
+        <div class="card">
+          <div class="toolbar">
+            <div class="pills lm-tabs" role="tablist"><a class="pill on" href="#courses">Courses</a><a class="pill" href="#lessons">All Lessons</a><a class="pill" href="#videos">Videos</a></div>
+            <label class="searchbox"><span data-icon="search"></span><input id="courseSearch" type="search" placeholder="Search courses…"></label>
+          </div>
+          <div class="course-list" id="courseList"></div>
+        </div>
+      </section>
+
+      <!-- Course details -->
+      <section class="view" id="v-course" hidden>
+        <div class="card" id="courseDetail"></div>
+      </section>
+
+      <!-- All lessons / videos tables -->
+      <section class="view" id="v-materials" hidden>
+        <div class="page-head">
+          <div><h1 id="matTitle">All Lessons</h1><p id="matSub"></p></div>
+          <div class="head-btns">
+            <button class="btn btn-primary" id="addLesson"><span data-icon="plus"></span>Add Lesson</button>
+            <button class="btn btn-primary" id="addVideo"><span data-icon="video"></span>Add Video</button>
+          </div>
+        </div>
+        <div class="card">
+          <div class="toolbar">
+            <div class="pills lm-tabs" role="tablist"><a class="pill" href="#courses">Courses</a><a class="pill" href="#lessons" data-t="lessons">All Lessons</a><a class="pill" href="#videos" data-t="videos">Videos</a></div>
+            <label class="searchbox"><span data-icon="search"></span><input id="matSearch" type="search" placeholder="Search…"></label>
+            <select class="select status-sel" id="matCourse" aria-label="Filter by course"></select>
+          </div>
+          <div class="table-wrap"><table class="table stack" id="matTable"></table></div>
+          <div class="pager" id="pager"></div>
+        </div>
+      </section>
+
+      <!-- Lesson editor -->
+      <section class="view" id="v-lesson" hidden>
+        <div class="page-head"><div><h1 id="lsTitleH">Add Lesson</h1><p>This is what students read, so write it for beginners.</p></div></div>
+        <div class="form-grid">
+          <form class="card" id="lessonForm" novalidate>
+            <div class="field"><label for="sTitle">Lesson title <span class="req">*</span></label><input class="input" id="sTitle" placeholder="e.g. Variables and Data Types" autocomplete="off"><div class="err" id="esTitle"></div></div>
+            <div class="row2">
+              <div class="field"><label for="sCourse">Course <span class="req">*</span></label><select class="select" id="sCourse"></select><div class="err" id="esCourse"></div></div>
+              <div class="field"><label for="sStatus">Status</label><select class="select" id="sStatus"><option>Draft</option><option>Published</option></select></div>
+            </div>
+            <div class="field"><label for="sObj">Learning objectives <span class="sub">(one per line)</span></label><textarea class="textarea" id="sObj" placeholder="Create variables&#10;Recognize basic data types"></textarea></div>
+            <div class="field"><label for="sContent">Lesson content <span class="req">*</span> <span class="sub">(leave a blank line between paragraphs)</span></label><textarea class="textarea tall" id="sContent" placeholder="Explain the topic in simple words…"></textarea><div class="err" id="esContent"></div></div>
+            <div class="field"><label for="sCode">Code example</label><textarea class="textarea mono" id="sCode" spellcheck="false" placeholder="name = &quot;Ana&quot;&#10;print(name)"></textarea></div>
+            <div class="field"><label for="sOut">Expected output</label><textarea class="textarea mono" id="sOut" spellcheck="false" placeholder="Ana"></textarea></div>
+            <div class="field"><label for="sPractice">Short practice exercise</label><textarea class="textarea" id="sPractice" placeholder="Ask the student to try something small."></textarea></div>
+            <div class="field" id="linkedField" hidden><span class="label">Linked activities</span><div id="linkedList"></div></div>
+            <div class="form-actions"><button type="button" class="btn btn-ghost" id="cancelLesson">Cancel</button><button class="btn btn-primary" type="submit">Save Lesson</button></div>
+          </form>
+          <aside class="card preview-card"><div class="card-title">Student preview</div><div id="lessonPrev" class="lesson-prev"></div></aside>
+        </div>
+      </section>
+
+      <!-- Video form -->
+      <section class="view" id="v-video" hidden>
+        <div class="page-head"><div><h1 id="vidTitle">Add Video</h1></div></div>
+        <div class="form-grid">
+          <form class="card" id="videoForm" novalidate>
+            <div class="field"><label for="lTitle">Video title <span class="req">*</span></label><input class="input" id="lTitle" placeholder="Enter video title" autocomplete="off"><div class="err" id="elTitle"></div></div>
+            <div class="row2">
+              <div class="field"><label for="lLesson">Lesson <span class="req">*</span></label><select class="select" id="lLesson"></select><div class="err" id="elLesson"></div></div>
+              <div class="field"><label for="lStatus">Status</label><select class="select" id="lStatus"><option>Draft</option><option>Published</option></select></div>
+            </div>
+            <div class="field"><label for="lVideo">Video link (YouTube) <span class="req">*</span></label><input class="input" id="lVideo" placeholder="https://www.youtube.com/watch?v=..." autocomplete="off"><div class="err" id="elVideo"></div></div>
+            <div class="field"><label for="lDesc">Description</label><textarea class="textarea" id="lDesc" placeholder="Enter video description"></textarea></div>
+            <div class="form-actions"><button type="button" class="btn btn-ghost" data-back="videos">Cancel</button><button class="btn btn-primary" type="submit">Save Video</button></div>
+          </form>
+          <aside class="card preview-card">
+            <div class="card-title">Preview</div>
+            <div class="video" id="videoPrev"><button class="play" type="button" aria-label="Play preview"><span data-icon="play"></span></button><span class="vlen">10:24</span></div>
+            <p class="cap" id="videoCap">Video Preview</p>
+          </aside>
+        </div>
+      </section>
+    </main>
+  </div>
+</div>
+
+<!-- Course modal -->
+<div class="modal-backdrop" id="courseModal">
+  <form class="modal" id="courseForm" novalidate>
+    <div class="modal-head"><h2 id="cTitleH">Add Course</h2><button type="button" class="icon-btn" data-close aria-label="Close"><span data-icon="x"></span></button></div>
+    <div class="field"><label for="cName">Course title <span class="req">*</span></label><input class="input" id="cName" placeholder="e.g. Python Basics" autocomplete="off"><div class="err" id="ecName"></div></div>
+    <div class="row2">
+      <div class="field"><label for="cLevel">Level</label><select class="select" id="cLevel"><option>Beginner</option><option>Intermediate</option><option>Advanced</option></select></div>
+      <div class="field"><label for="cStatus">Status</label><select class="select" id="cStatus"><option>Draft</option><option>Published</option></select></div>
+    </div>
+    <div class="field"><label for="cIcon">Icon</label><select class="select" id="cIcon"><option value="python">Python</option><option value="layers">Layers</option><option value="cube">Cube</option><option value="code">Code</option></select></div>
+    <div class="field"><label for="cDesc">Description</label><textarea class="textarea" id="cDesc" placeholder="What will students learn?"></textarea></div>
+    <div class="modal-foot"><button type="button" class="btn btn-ghost" data-close>Cancel</button><button class="btn btn-primary" type="submit">Save Course</button></div>
+  </form>
+</div>
+<nav class="bottomnav" id="bottomnav" aria-label="Quick navigation"></nav>
+<div class="drawer" id="drawer"></div>
+<div class="toasts" id="toasts"></div>
+<script src="../assets/js/icons.js"></script>
+<script src="../assets/js/layout.js"></script>
+<script src="../assets/js/data.js"></script>
+<script src="script.js"></script>
+</body>
+</html>

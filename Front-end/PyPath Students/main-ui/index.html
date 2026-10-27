@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>PyPath Student</title>
+<link rel="icon" href="../assets/img/logo-icon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<!-- MAIN UI: shared styles + script (sidebar, top bar, theme, icons, data) -->
+<link rel="stylesheet" href="style.css">
+<script src="script.js"></script>
+</head>
+<body>
+<!-- START PAGE: open this file first, or go straight to the login page -->
+<main class="launch">
+  <header class="launch-head">
+    <img src="../assets/img/logo-icon.png" alt="" data-ph="Logo">
+    <div><h1>PyPath Student</h1><p>Clickable frontend of the student side. Sample data is saved in this browser.</p></div>
+  </header>
+
+  <a class="btn btn-primary btn-block" href="../login/index.html"><span data-icon="arrowright"></span>Start at Student Login</a>
+
+  <section>
+    <h2>Jump to a page</h2>
+    <ul class="launch-list">
+      <li><a class="card" href="../login/index.html"><span class="tile t-blue"><span data-icon="lock"></span></span><div><b>Login</b><small>Sign in or create an account</small></div><span data-icon="right"></span></a></li>
+      <li><a class="card" href="../home/index.html"><span class="tile t-blue"><span data-icon="home"></span></span><div><b>Home</b><small>Your dashboard</small></div><span data-icon="right"></span></a></li>
+      <li><a class="card" href="../learning-materials/index.html"><span class="tile t-green"><span data-icon="book"></span></span><div><b>Courses</b><small>Courses, modules and lectures</small></div><span data-icon="right"></span></a></li>
+      <li><a class="card" href="../activities/index.html"><span class="tile t-purple"><span data-icon="quiz"></span></span><div><b>Activities</b><small>Quizzes and practice exercises</small></div><span data-icon="right"></span></a></li>
+      <li><a class="card" href="../announcements/index.html"><span class="tile t-pink"><span data-icon="megaphone"></span></span><div><b>Announcements</b><small>News from your teachers</small></div><span data-icon="right"></span></a></li>
+      <li><a class="card" href="../rewards/index.html"><span class="tile t-yellow"><span data-icon="gift"></span></span><div><b>Points &amp; Rewards</b><small>Badges and redeemable rewards</small></div><span data-icon="right"></span></a></li>
+      <li><a class="card" href="../profile/index.html"><span class="tile t-orange"><span data-icon="user"></span></span><div><b>Profile</b><small>Account and settings</small></div><span data-icon="right"></span></a></li>
+    </ul>
+  </section>
+</main>
+</body>
+</html>
